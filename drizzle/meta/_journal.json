@@ -1,5 +1,27 @@
 {
   "version": "7",
   "dialect": "sqlite",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1786511068275,
+      "tag": "0000_busy_juggernaut",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1786512723581,
+      "tag": "0001_wise_ben_urich",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1786513903448,
+      "tag": "0002_medical_ma_gnuci",
+      "breakpoints": true
+    }
+  ]
 }
