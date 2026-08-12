@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 type GalleryMediaRow = { image_id: string; r2_key: string };
 
 export async function DELETE(request: Request, context: { params: Promise<{ id: string }> }) {
-  const admin = requireAdmin(request);
+  const admin = await requireAdmin(request);
   if (admin instanceof Response) return admin;
   const { id } = await context.params;
   if (!id.startsWith("upload-")) return Response.json({ error: "Тази снимка е част от първоначалния сайт." }, { status: 400 });

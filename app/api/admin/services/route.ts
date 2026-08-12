@@ -5,7 +5,7 @@ import { requireDatabase } from "../../../../src/server/bindings";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  const admin = requireAdmin(request);
+  const admin = await requireAdmin(request);
   if (admin instanceof Response) return admin;
   const payload = await request.json() as { icon?: string; title?: string; description?: string; price?: string };
   const icon = payload.icon?.trim() ?? "";

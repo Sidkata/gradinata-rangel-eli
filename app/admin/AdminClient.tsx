@@ -246,6 +246,11 @@ export default function AdminClient({ identityEmail }: { identityEmail: string }
         <div className="admin-header__actions">
           <span>{identityEmail === "local@preview" ? "Локален преглед" : identityEmail}</span>
           <a className="admin-button" href="/" target="_blank" rel="noreferrer">Виж сайта ↗</a>
+          {identityEmail !== "local@preview" && (
+            <form action="/api/admin/logout" method="post">
+              <button className="admin-button" type="submit">Изход</button>
+            </form>
+          )}
         </div>
       </header>
 

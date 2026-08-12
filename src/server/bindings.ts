@@ -2,6 +2,7 @@ export type AppBindings = {
   DB?: D1Database;
   MEDIA?: R2Bucket;
   ADMIN_EMAILS?: string;
+  ADMIN_PASSWORD?: string;
 };
 
 declare global {

@@ -5,9 +5,14 @@ import AdminClient from "./AdminClient";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminPage() {
+export default async function AdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
   const requestHeaders = await headers();
-  const access = getAdminAccess(requestHeaders, requestHeaders.get("host"));
+  const access = await getAdminAccess(requestHeaders, requestHeaders.get("host"));
+  const { error } = await searchParams;
 
   if (!access.allowed) {
     return (
@@ -15,18 +20,29 @@ export default async function AdminPage() {
         <div className="admin-gate__card">
           <span className="admin-gate__mark" aria-hidden="true">Р & Е</span>
           <p className="admin-eyebrow">Управление на сайта</p>
-          <h1>Администраторски панел</h1>
+          <h1>Администраторски<br />панел</h1>
           <p>
             {access.reason === "not-allowed"
               ? "Този профил няма разрешение да редактира сайта."
               : access.reason === "not-configured"
                 ? "Панелът е готов, но профилът на собственика трябва да бъде разрешен при публикуването."
-                : "Влезте със своя профил, за да редактирате продукцията и снимките."}
+                : "Влезте с имейл и парола, за да редактирате продукцията, услугите и снимките."}
           </p>
+          {error === "invalid" && (
+            <p className="admin-login-error" role="alert">Имейлът или паролата не са правилни.</p>
+          )}
           {access.reason === "signed-out" && (
-            <a className="admin-button admin-button--primary" href="/signin-with-chatgpt?return_to=%2Fadmin">
-              Вход за администратор
-            </a>
+            <form className="admin-login-form" action="/api/admin/login" method="post">
+              <label>
+                Имейл
+                <input name="email" type="email" defaultValue="elena208@abv.bg" autoComplete="username" required />
+              </label>
+              <label>
+                Парола
+                <input name="password" type="password" autoComplete="current-password" required />
+              </label>
+              <button className="admin-button admin-button--primary" type="submit">Вход за администратор</button>
+            </form>
           )}
           <Link className="admin-back-link" href="/">← Обратно към сайта</Link>
         </div>

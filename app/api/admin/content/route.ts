@@ -4,7 +4,7 @@ import { readManagedContent } from "../../../../src/server/content-store";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
-  const admin = requireAdmin(request);
+  const admin = await requireAdmin(request);
   if (admin instanceof Response) return admin;
 
   try {

@@ -8,6 +8,7 @@ interface Env {
   DB: D1Database;
   MEDIA: R2Bucket;
   ADMIN_EMAILS?: string;
+  ADMIN_PASSWORD?: string;
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {

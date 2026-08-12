@@ -13,7 +13,7 @@ function uploadError(message: string, status = 400) {
 }
 
 export async function POST(request: Request) {
-  const admin = requireAdmin(request);
+  const admin = await requireAdmin(request);
   if (admin instanceof Response) return admin;
 
   let form: FormData;

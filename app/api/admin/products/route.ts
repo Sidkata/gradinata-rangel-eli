@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 const allowedStatuses = new Set<ProductStatus>(["available", "soon", "finished"]);
 
 export async function POST(request: Request) {
-  const admin = requireAdmin(request);
+  const admin = await requireAdmin(request);
   if (admin instanceof Response) return admin;
   const payload = await request.json() as { name?: string; description?: string; icon?: string; status?: ProductStatus; price?: string };
   const name = payload.name?.trim() ?? "";

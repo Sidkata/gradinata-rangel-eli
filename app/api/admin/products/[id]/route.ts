@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 const allowedStatuses = new Set<ProductStatus>(["available", "soon", "finished"]);
 
 export async function PUT(request: Request, context: { params: Promise<{ id: string }> }) {
-  const admin = requireAdmin(request);
+  const admin = await requireAdmin(request);
   if (admin instanceof Response) return admin;
 
   const { id } = await context.params;
@@ -54,7 +54,7 @@ export async function PUT(request: Request, context: { params: Promise<{ id: str
 type ProductMediaRow = { image_id: string | null; r2_key: string | null };
 
 export async function DELETE(request: Request, context: { params: Promise<{ id: string }> }) {
-  const admin = requireAdmin(request);
+  const admin = await requireAdmin(request);
   if (admin instanceof Response) return admin;
   const { id } = await context.params;
   const current = (await readManagedContent()).products.find((product) => product.id === id);

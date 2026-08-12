@@ -5,7 +5,7 @@ import { requireDatabase, requireMediaBucket } from "../../../../../src/server/b
 export const dynamic = "force-dynamic";
 
 export async function PUT(request: Request, context: { params: Promise<{ id: string }> }) {
-  const admin = requireAdmin(request);
+  const admin = await requireAdmin(request);
   if (admin instanceof Response) return admin;
   const { id } = await context.params;
   const current = (await readManagedContent()).repairServices.find((service) => service.id === id);
@@ -40,7 +40,7 @@ export async function PUT(request: Request, context: { params: Promise<{ id: str
 type ServiceMediaRow = { image_id: string | null; r2_key: string | null };
 
 export async function DELETE(request: Request, context: { params: Promise<{ id: string }> }) {
-  const admin = requireAdmin(request);
+  const admin = await requireAdmin(request);
   if (admin instanceof Response) return admin;
   const { id } = await context.params;
   const current = (await readManagedContent()).repairServices.find((service) => service.id === id);

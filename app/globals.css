@@ -2050,9 +2050,10 @@ p {
   background: var(--paper);
   border: 1px solid var(--line);
   box-shadow: 20px 20px 0 rgba(21, 60, 43, 0.08);
-  max-width: 540px;
+  max-width: 620px;
   padding: clamp(32px, 6vw, 64px);
   text-align: center;
+  width: 100%;
 }
 
 .admin-gate__mark {
@@ -2068,14 +2069,62 @@ p {
 }
 
 .admin-gate h1 {
-  font-size: clamp(38px, 6vw, 58px);
-  line-height: 1;
+  font-size: clamp(34px, 4vw, 42px);
+  line-height: 0.98;
   margin: 10px 0 20px;
+  overflow-wrap: break-word;
 }
 
 .admin-gate__card > p:not(.admin-eyebrow) {
   color: var(--muted);
   margin-bottom: 25px;
+}
+
+.admin-login-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+  text-align: left;
+}
+
+.admin-login-form label {
+  color: var(--forest-deep);
+  display: grid;
+  font-size: 12px;
+  font-weight: 750;
+  gap: 7px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-login-form input {
+  background: #fffdf7;
+  border: 1px solid rgba(21, 60, 43, 0.25);
+  border-radius: 0;
+  color: var(--ink);
+  min-width: 0;
+  padding: 13px 14px;
+  text-transform: none;
+  width: 100%;
+}
+
+.admin-login-form .admin-button {
+  justify-content: center;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.admin-gate__card > .admin-login-error {
+  background: #f8e4dd;
+  border: 1px solid rgba(168, 78, 50, 0.35);
+  color: #842f20;
+  font-size: 13px;
+  margin: 0;
+  padding: 10px 12px;
+}
+
+.admin-header__actions form {
+  margin: 0;
 }
 
 .admin-back-link {
@@ -2225,6 +2274,9 @@ p {
   .footer-main nav { grid-column: auto; }
   .footer-bottom { align-items: flex-start; flex-direction: column; gap: 7px; }
   .admin-page { padding-inline: 12px; }
+  .admin-gate { padding: 16px; }
+  .admin-gate__card { box-shadow: 10px 10px 0 rgba(21, 60, 43, 0.08); padding: 32px 22px; }
+  .admin-gate h1 { font-size: clamp(32px, 10vw, 38px); }
   .admin-product-grid,
   .admin-gallery-grid,
   .admin-gallery-form,
