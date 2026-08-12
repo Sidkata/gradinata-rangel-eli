@@ -15,7 +15,9 @@
   },
   "d1_databases": [
     {
-      "binding": "DB"
+      "binding": "DB",
+      "database_name": "gradinata-rangel-eli-db",
+      "database_id": "f83c3ad7-31a5-4cab-aba8-7cedd6152d80"
     }
   ],
   "r2_buckets": [
