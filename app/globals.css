@@ -2123,6 +2123,15 @@ p {
   padding: 10px 12px;
 }
 
+.admin-gate__card > .admin-setup-notice {
+  background: #fff4d6;
+  border: 1px solid rgba(216, 164, 65, 0.55);
+  color: #684b10;
+  font-size: 13px;
+  margin: 0;
+  padding: 10px 12px;
+}
+
 .admin-header__actions form {
   margin: 0;
 }

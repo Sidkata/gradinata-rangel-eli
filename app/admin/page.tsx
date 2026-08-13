@@ -25,13 +25,18 @@ export default async function AdminPage({
             {access.reason === "not-allowed"
               ? "Този профил няма разрешение да редактира сайта."
               : access.reason === "not-configured"
-                ? "Панелът е готов, но профилът на собственика трябва да бъде разрешен при публикуването."
+                ? "Въведете имейла и паролата за администраторски достъп."
                 : "Влезте с имейл и парола, за да редактирате продукцията, услугите и снимките."}
           </p>
+          {access.reason === "not-configured" && (
+            <p className="admin-setup-notice" role="status">
+              Паролата за панела още не е активирана в Cloudflare.
+            </p>
+          )}
           {error === "invalid" && (
             <p className="admin-login-error" role="alert">Имейлът или паролата не са правилни.</p>
           )}
-          {access.reason === "signed-out" && (
+          {(access.reason === "signed-out" || access.reason === "not-configured") && (
             <form className="admin-login-form" action="/api/admin/login" method="post">
               <label>
                 Имейл
